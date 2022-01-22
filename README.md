@@ -33,11 +33,13 @@ The service can be configured via environment variables, exclusively.
 | Variable | Description | Default |
 | --- | --- | --- |
 | PODINFORS_BIND_IP | IP address to bind the service to. Currently only IPV4 supported.  | `127.0.0.1` |
-| PODINFORS_BIOND_PORT | The port the service should listen on. | `6666` |
+| PODINFORS_BIND_PORT | The port the service should listen on. | `6666` |
 
 ## REST API
 
 | Request | Description |
 | --- | --- |
 | `GET /healthz` | Returns `200 OK` when the REST API is up. |
-| `GET /readyz` | Returns `200 OK` when the service is functioning. Currently this is always true, when `/healtz` returns `OK`. |
+| `GET /readyz` | Returns `200 OK` when the service is functioning (ready state set to *ready*) or `503 Service Unavailable` when ready state is set to *not ready*. The ready state is *ready* by default. |
+| `POST /readyz/enable` | Sets the ready state to *ready*. |
+| `POST /readyz/disable` | Sets the ready state to *not ready* |
