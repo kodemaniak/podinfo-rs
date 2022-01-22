@@ -43,3 +43,4 @@ The service can be configured via environment variables, exclusively.
 | `GET /readyz` | Returns `200 OK` when the service is functioning (ready state set to *ready*) or `503 Service Unavailable` when ready state is set to *not ready*. The ready state is *ready* by default. |
 | `POST /readyz/enable` | Sets the ready state to *ready*. |
 | `POST /readyz/disable` | Sets the ready state to *not ready* |
+| `POST /echo` | Echoes the `POST`ed body and it's `Content-Type` if specified. If no `Content-Type` ist given, it will echo the body with a `Content-Type` of `application/octet-stream`. |
