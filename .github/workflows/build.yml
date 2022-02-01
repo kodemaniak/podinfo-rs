@@ -1,0 +1,50 @@
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+          components: rustfmt, clippy
+      - name: fmt check
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all -- --check
+      - name: check
+        uses: actions-rs/cargo@v1
+        with:
+          command: check
+      - name: clippy
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: -- -D warnings
+      - name: test
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+
+  build-image:
+    runs-on: ubuntu-20.04
+    needs: check
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+
+      - name: build image
+        uses: docker/build-push-action@8c76bb76c29ef1a323204893a39e7e0413e831d3
+        with:
+          context: .
+          push: false

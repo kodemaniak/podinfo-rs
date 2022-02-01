@@ -1,0 +1,108 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  verify-version:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+
+      - name: download dasel
+        run: |
+          curl -sL https://github.com/TomWright/dasel/releases/download/v1.21.2/dasel_linux_amd64 --output dasel && \
+          chmod +x dasel && \
+          ./dasel --version
+
+      - name: verify version
+        run: |
+          export CARGO_VERSION=`./dasel select -f Cargo.toml -s '.package.version'`
+          export TAG_VERSION=$GITHUB_REF_NAME # remove leading 'v'
+          echo "Cargo version: $CARGO_VERSION"
+          echo "Tag version: $TAG_VERSION"
+          test $CARGO_VERSION = $TAG_VERSION
+
+  check:
+    runs-on: ubuntu-20.04
+    needs: verify-version
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
+          components: rustfmt, clippy
+      - name: fmt check
+        uses: actions-rs/cargo@v1
+        with:
+          command: fmt
+          args: --all -- --check
+      - name: check
+        uses: actions-rs/cargo@v1
+        with:
+          command: check
+      - name: clippy
+        uses: actions-rs/cargo@v1
+        with:
+          command: clippy
+          args: -- -D warnings
+      - name: test
+        uses: actions-rs/cargo@v1
+        with:
+          command: test
+
+  build-and-push-image:
+    runs-on: ubuntu-20.04
+    needs: check
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+
+      - name: log in to the container registry
+        uses: docker/login-action@7948fffc4991dccc0bd25c3968d21aa61369a5ad
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: download dasel
+        run: |
+          curl -sL https://github.com/TomWright/dasel/releases/download/v1.21.2/dasel_linux_amd64 --output dasel && \
+          chmod +x dasel && \
+          ./dasel --version
+
+      - name: set version env
+        run: |
+          export CARGO_VERSION=`./dasel select -f Cargo.toml -s '.package.version'`
+          echo "CARGO_VERSION=$CARGO_VERSION" >> $GITHUB_ENV
+
+      - name: set commit short hash env
+        run: |
+          export GIT_SHORT_COMMIT_ID=`git rev-parse --short HEAD`
+          echo "GIT_SHORT_COMMIT_ID=$GIT_SHORT_COMMIT_ID" >> $GITHUB_ENV
+
+      - name: set commit timestamp env
+        run: |
+          export GIT_COMMIT_UNIX_TIMESTAMP=`git show --format=%ct HEAD -s`
+          export GIT_COMMIT_TIMESTAMP=`date -u -d @$GIT_COMMIT_UNIX_TIMESTAMP +%Y%m%d%H%M%S`
+          echo "GIT_COMMIT_TIMESTAMP=$GIT_COMMIT_TIMESTAMP" >> $GITHUB_ENV
+
+      - name: set version env
+        run: |
+          echo "RELEASE_VERSION=$CARGO_VERSION-$GIT_COMMIT_TIMESTAMP-$GIT_SHORT_COMMIT_ID" >> $GITHUB_ENV
+
+      - name: build and push Docker image
+        uses: docker/build-push-action@8c76bb76c29ef1a323204893a39e7e0413e831d3
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/kodemaniak/dyndnsd/releases/dyndnsd:${{ env.RELEASE_VERSION }}
