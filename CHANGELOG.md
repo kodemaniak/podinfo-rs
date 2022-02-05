@@ -5,6 +5,7 @@
 <a name="v0.1.0"></a>
 ## v0.1.0 - 2022-02-05
 ### Bug Fixes
+- **build:** Fixed the ghcr registry path.
 - **build:** Not build twice for every merge request.
 - **docs:** Fixed paths to REST resources. ([#10](https://github.com/kodemaniak/dyndnsd/issues/10))
 
