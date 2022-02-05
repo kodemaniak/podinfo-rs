@@ -105,4 +105,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/kodemaniak/dyndnsd/releases/dyndnsd:${{ env.RELEASE_VERSION }},ghcr.io/kodemaniak/dyndnsd/releases/dyndnsd:${{ env.CARGO_VERSION }},latest
+          tags: ghcr.io/kodemaniak/podman-rs/releases/dyndnsd:${{ env.RELEASE_VERSION }},ghcr.io/kodemaniak/podman-rs/releases/dyndnsd:${{ env.CARGO_VERSION }},latest

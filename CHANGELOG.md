@@ -12,6 +12,7 @@
 - **build:** Added latest and a short version tag (x.y.z, no build metadata).
 
 ### Other
+- Prepare 0.1.0 release.
 - **build:** Adedd git-chglog configuration for automatic CHANGELOG generation.
 - **build:** Configured Renovate to use semantic commits.
 - **feat:** Added Dockerfile and build pipelines plus some docs about the build.
