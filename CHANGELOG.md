@@ -2,6 +2,13 @@
 ## [Unreleased]
 
 
+<a name="v0.2.0"></a>
+## [v0.2.0] - 2022-02-05
+### Bug Fixes
+- **build:** Fixed the image name.
+- **build:** Added full path to `latest` tag.
+
+
 <a name="v0.1.0"></a>
 ## v0.1.0 - 2022-02-05
 ### Bug Fixes
@@ -19,4 +26,5 @@
 - **feat:** Added Dockerfile and build pipelines plus some docs about the build.
 
 
-[Unreleased]: https://github.com/kodemaniak/dyndnsd/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/kodemaniak/dyndnsd/compare/v0.2.0...HEAD
+[v0.2.0]: https://github.com/kodemaniak/dyndnsd/compare/v0.1.0...v0.2.0
