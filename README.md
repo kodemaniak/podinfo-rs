@@ -51,6 +51,7 @@ The project uses GitHub Actions for the build and release process:
 
 * The [build.yml](.github/workflows/build.yml) pipeline is run on every push and merge request. It checks formatting, uses `cargo clippy` for linting and builds and tests the project and then tries to build the container. The container is build in `--release` mode, and tests are run again.
 * The [release.yml](.github/workflows/release.yml) pipeline is run on version tags (semantic versioning compatible) and performs all steps of the build pipeline, but finally pushes the docker image into the GitHub Container Registry.
+* The main branch is protected, thus all changes have to be merged into the m`ain` branch via pull requests. A pull request requires to pass the build pipeline. We also require merge request to be based on an up-to-date `main` with a linea history.
 
 ### Open Issues
 
