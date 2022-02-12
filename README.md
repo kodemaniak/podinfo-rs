@@ -75,6 +75,7 @@ The steps are:
 * Update the `CHANGELOG` with `git cliff --tag <release version>`.
 * Commit everything and then tag the commit with `git tag -a -m 'Release <release version>'`.
 * Push the commit, wait if everything builds successfully, and then push the tag to trigger the release.
+* Bump the version to the next patch version (`cargo next --patch`).
 
 ## Automatic Dependency Updates with Renovate
 
