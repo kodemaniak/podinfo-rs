@@ -51,7 +51,7 @@ The project uses GitHub Actions for the build and release process:
 
 * The [build.yml](.github/workflows/build.yml) pipeline is run on every push and merge request. It checks formatting, uses `cargo clippy` for linting and builds and tests the project and then tries to build the container. The container is build in `--release` mode, and tests are run again.
 * The [release.yml](.github/workflows/release.yml) pipeline is run on version tags (semantic versioning compatible) and performs all steps of the build pipeline, but finally pushes the docker image into the GitHub Container Registry.
-* The main branch is protected, thus all changes have to be merged into the m`ain` branch via pull requests. A pull request requires to pass the build pipeline. We also require merge request to be based on an up-to-date `main` with a linea history.
+* The main branch is protected, thus all changes have to be merged into the `main` branch via pull requests. A pull request requires to pass the build pipeline. We also require merge request to be based on an up-to-date `main` with a linea history.
 
 ### Open Issues
 
@@ -62,7 +62,19 @@ The project uses GitHub Actions for the build and release process:
 
 ## CHANGELOG generation
 
-We use [git-chglog](https://github.com/git-chglog/git-chglog) to generate the CHANGELOG from commit following the [Conventional Commits](https://www.conventionalcommits.org/) standard. The configuration for `git-chglog` is available under [`.chglog`](.chglog/).
+We use [git-cliff](https://github.com/orhun/git-cliff) to generate the CHANGELOG from commits following the [Conventional Commits](https://www.conventionalcommits.org/) standard. The configuration for `git-cliff` is available in [`cliff.toml`](cliff.toml).
+
+## Releases
+
+Releases are performed following a number of manual steps. We use [`cargo-next`](https://github.com/conventional-commits-rs/cargo-next) for managing the version number.
+
+The steps are:
+
+* Check the current version and whether it is the version you want to release (specifically check for breaking changes). You can use `cargo next --get` to get the current version number.
+* If required, update the version accordingly, e.g., with something like `cargo next --patch/--minor/--major`.
+* Update the `CHANGELOG` with `git cliff --tag <release version>`.
+* Commit everything and the tag the commit with `git tag -a -m 'Release <release version>'`.
+* Push the commit, wait if everything builds successfully, and then push the tag to trigger the release.
 
 ## Automatic Dependency Updates with Renovate
 
