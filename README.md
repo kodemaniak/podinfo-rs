@@ -73,7 +73,7 @@ The steps are:
 * Check the current version and whether it is the version you want to release (specifically check for breaking changes). You can use `cargo next --get` to get the current version number.
 * If required, update the version accordingly, e.g., with something like `cargo next --patch/--minor/--major`.
 * Update the `CHANGELOG` with `git cliff --tag <release version>`.
-* Commit everything and the tag the commit with `git tag -a -m 'Release <release version>'`.
+* Commit everything and then tag the commit with `git tag -a -m 'Release <release version>'`.
 * Push the commit, wait if everything builds successfully, and then push the tag to trigger the release.
 
 ## Automatic Dependency Updates with Renovate
