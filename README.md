@@ -76,6 +76,7 @@ The steps are:
 * Commit everything to a release branch (`release-<version>`).
 * When the branch is merged, tag the commit on `main` with `git tag -a -m 'Release <release version>'`.
 * Push the tag to trigger the release.
+* Bump the version to the next patch version (`cargo next --patch`).
 
 ## Automatic Dependency Updates with Renovate
 
