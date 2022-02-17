@@ -32,6 +32,7 @@ The service can be configured via environment variables, exclusively.
 
 | Variable | Description | Default |
 | --- | --- | --- |
+| RUST_LOG | Configure logging level of components. Compatible with [env_logger](https://crates.io/crates/env_logger) | `info` |
 | PODINFORS_BIND_IP | IP address to bind the service to. Currently only IPV4 supported.  | `127.0.0.1` |
 | PODINFORS_BIND_PORT | The port the service should listen on. | `6666` |
 
