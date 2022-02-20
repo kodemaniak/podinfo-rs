@@ -2,7 +2,7 @@
 
  Podinfo-rs is a microservice example service written in pure Rust. It is supposed to document my (opinionated) best practices for writing microservices in Rust aimed at running in Kubernetes.
 
- Podinfo-rs is inspired by [https://github.com/stefanprodan/podinfo](podinfo).
+ Podinfo-rs is inspired by [podinfo](https://github.com/stefanprodan/podinfo).
 
  ## Running from shell
 
