@@ -3,7 +3,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: build
+name: trivy
 
 on:
   push:
@@ -33,7 +33,7 @@ jobs:
           docker build -t localbuild/trivy:${{ github.sha }} .
 
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@2a2157eb22c08c9a1fac99263430307b8d1bc7a2
+        uses: aquasecurity/trivy-action@0.2.2
         with:
           image-ref: 'localbuild/trivy:${{ github.sha }}'
           format: 'template'
