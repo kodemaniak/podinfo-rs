@@ -9,6 +9,10 @@ All notable changes to this project will be documented in this file.
 - Update rust crate anyhow to 1.0.55 (#23)
 - Update rust crate tower-http to 0.2.3 (#22)
 
+### Features
+
+- Added build_info crate (#35)
+
 ### Miscellaneous Tasks
 
 - Update docker/login-action commit hash to 6af3c11 (#19)
