@@ -1,3 +1,5 @@
+![GitHub](https://img.shields.io/github/license/kodemaniak/podinfo-rs?style=flat-square)
+
 # podinfo-rs
 
  Podinfo-rs is an example microservice written in pure Rust. It is supposed to document my (opinionated) best practices for writing microservices in Rust. This repository will also contain Kubernetes manifests and helm charts to document my best practices of building for and deploying to Kubernetes. If you have ideas, critique, or other ways of solving things, please feel free to open issues or create pull requests.
