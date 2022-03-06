@@ -84,3 +84,7 @@ The steps are:
 The project uses [Renovate](https://github.com/renovatebot/renovate) to automatically update dependencies using pull requests. We use a fairly standard setup, please have a lokk at [`renovate.json`](renovate.json). Modifications so far:
 
 * Added `:semanticCommits` for semantic commit messages that can be used to automatically generate a CHANGELOG with [`git-chglog`](https://github.com/git-chglog/git-chglog) (or other tools).
+
+## Security Scanning
+
+Currently we have trivy and anchore enabled, however, this topic has to be investigated further.
