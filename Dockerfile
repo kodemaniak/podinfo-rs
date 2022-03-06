@@ -1,4 +1,4 @@
-FROM docker.io/ekidd/rust-musl-builder:1.57.0 as builder
+FROM docker.io/ekidd/rust-musl-builder:1.59.0 as builder
 
 ADD --chown=rust:rust . ./
 
