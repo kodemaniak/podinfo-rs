@@ -2,7 +2,7 @@ use axum::{
     extract::Extension,
     http::StatusCode,
     routing::{get, post},
-    AddExtensionLayer, Router,
+    Router,
 };
 use std::sync::Arc;
 use tokio::sync::RwLock;
@@ -13,7 +13,7 @@ pub fn z_routes() -> Router {
         .route("/readyz", get(get_readyz))
         .route("/readyz/enable", post(enable_readyz))
         .route("/readyz/disable", post(disable_readyz))
-        .layer(AddExtensionLayer::new(SharedReadyzState::default()))
+        .layer(Extension(SharedReadyzState::default()))
 }
 
 async fn get_healthz() -> StatusCode {
