@@ -1,12 +1,15 @@
-FROM docker.io/ekidd/rust-musl-builder:1.59.0 as builder
+FROM docker.io/rust:1.59.0 as builder
 
-ADD --chown=rust:rust . ./
+WORKDIR /usr/src/podinfo-rs
+COPY . .
 
-RUN cargo build --release
+RUN rustup target add x86_64-unknown-linux-musl
+
+RUN cargo build --release --target x86_64-unknown-linux-musl
 
 FROM alpine:3.15.0
 
-COPY --from=builder /home/rust/src/target/x86_64-unknown-linux-musl/release/podinfo-rs /
+COPY --from=builder /usr/src/podinfo-rs/target/x86_64-unknown-linux-musl/release/podinfo-rs /
 
 WORKDIR /
 
