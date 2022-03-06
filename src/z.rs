@@ -2,10 +2,13 @@ use axum::{
     extract::Extension,
     http::StatusCode,
     routing::{get, post},
-    Router,
+    Json, Router,
 };
+use build_info::BuildInfo;
 use std::sync::Arc;
 use tokio::sync::RwLock;
+
+build_info::build_info!(fn build_info);
 
 pub fn z_routes() -> Router {
     Router::new()
@@ -13,6 +16,7 @@ pub fn z_routes() -> Router {
         .route("/readyz", get(get_readyz))
         .route("/readyz/enable", post(enable_readyz))
         .route("/readyz/disable", post(disable_readyz))
+        .route("/buildz", get(get_buildz))
         .layer(Extension(SharedReadyzState::default()))
 }
 
@@ -38,6 +42,10 @@ async fn disable_readyz(Extension(readyz_state): Extension<SharedReadyzState>) -
     readyz_state.write().await.enabled = false;
 
     StatusCode::OK
+}
+
+async fn get_buildz() -> Json<BuildInfo> {
+    Json(build_info().to_owned())
 }
 
 type SharedReadyzState = Arc<RwLock<ReadyzState>>;
