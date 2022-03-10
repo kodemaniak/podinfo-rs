@@ -8,6 +8,8 @@ use build_info::BuildInfo;
 use std::sync::Arc;
 use tokio::sync::RwLock;
 
+use crate::runtime_info::{RuntimeInfo, RuntimeInfoService};
+
 build_info::build_info!(fn build_info);
 
 pub fn z_routes() -> Router {
@@ -17,7 +19,9 @@ pub fn z_routes() -> Router {
         .route("/readyz/enable", post(enable_readyz))
         .route("/readyz/disable", post(disable_readyz))
         .route("/buildz", get(get_buildz))
+        .route("/infoz", get(get_infoz))
         .layer(Extension(SharedReadyzState::default()))
+        .layer(Extension(SharedRuntimeInfoService::default()))
 }
 
 async fn get_healthz() -> StatusCode {
@@ -48,6 +52,14 @@ async fn get_buildz() -> Json<BuildInfo> {
     Json(build_info().to_owned())
 }
 
+async fn get_infoz(
+    Extension(runtime_info_service): Extension<SharedRuntimeInfoService>,
+) -> Json<RuntimeInfo> {
+    let info = runtime_info_service.write().await.get_runtime_info();
+
+    Json(info)
+}
+
 type SharedReadyzState = Arc<RwLock<ReadyzState>>;
 
 struct ReadyzState {
@@ -59,3 +71,5 @@ impl Default for ReadyzState {
         Self { enabled: true }
     }
 }
+
+type SharedRuntimeInfoService = Arc<RwLock<RuntimeInfoService>>;
