@@ -1,6 +1,6 @@
-use std::{collections::HashSet, process, time::UNIX_EPOCH};
+use std::{process, time::UNIX_EPOCH};
 
-use caps::{CapSet, Capability};
+use caps::CapSet;
 use serde::Serialize;
 use sysinfo::{RefreshKind, System, SystemExt};
 
