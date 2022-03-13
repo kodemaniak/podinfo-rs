@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [0.2.2] - 2022-03-13
 
 ### Bug Fixes
 
@@ -12,6 +12,7 @@ All notable changes to this project will be documented in this file.
 ### Features
 
 - Added build_info crate (#35)
+- Provide API for returning runtime information. (#39)
 
 ### Miscellaneous Tasks
 
