@@ -1,1 +1,4 @@
 target/
+.cr-release-packages
+.github/
+chart/
