@@ -1,6 +1,27 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.2.2] - 2022-03-13
+
+### Bug Fixes
+
+- Update rust crate tokio to 1.17.0 (#17)
+- Update rust crate anyhow to 1.0.55 (#23)
+- Update rust crate tower-http to 0.2.3 (#22)
+
+### Features
+
+- Added build_info crate (#35)
+- Provide API for returning runtime information. (#39)
+
+### Miscellaneous Tasks
+
+- Update docker/login-action commit hash to 6af3c11 (#19)
+- Update actions/checkout action to v3 (#27)
+- Update anchore/scan-action commit hash to 0001ba0 (#29)
+- Update docker/login-action commit hash to f6d32ad (#26)
+- Update docker/build-push-action commit hash to 309fb91 (#32)
+
 ## [0.2.1] - 2022-02-12
 
 ### Bug Fixes
