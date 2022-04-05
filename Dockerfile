@@ -7,7 +7,7 @@ RUN rustup target add x86_64-unknown-linux-musl
 
 RUN cargo build --release --target x86_64-unknown-linux-musl
 
-FROM alpine:3.15.0
+FROM alpine:3.15.4
 
 COPY --from=builder /usr/src/podinfo-rs/target/x86_64-unknown-linux-musl/release/podinfo-rs /
 
