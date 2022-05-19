@@ -16,7 +16,7 @@ log = "0.4.14"
 serde = "1.0.136"
 serde_json = "1.0.79"
 sysinfo = "0.23.5"
-thiserror = "1.0.30"
+thiserror = "1.0.31"
 tokio = { version = "1.17.0", features = [ "macros", "rt-multi-thread" ] }
 tower-http = { version = "0.2.3", features = [ "trace" ] }
 tracing = "0.1.34"
