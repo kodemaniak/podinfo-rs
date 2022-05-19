@@ -12,7 +12,7 @@ axum = "0.4.8"
 build-info = { version = "0.0.26", features = [ "runtime", "serde" ] }
 caps = "0.5.3"
 envconfig = "0.10.0"
-log = "0.4.14"
+log = "0.4.17"
 serde = "1.0.136"
 serde_json = "1.0.79"
 sysinfo = "0.23.5"
