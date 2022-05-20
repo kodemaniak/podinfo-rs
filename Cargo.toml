@@ -14,7 +14,7 @@ caps = "0.5.3"
 envconfig = "0.10.0"
 log = "0.4.17"
 serde = "1.0.137"
-serde_json = "1.0.79"
+serde_json = "1.0.81"
 sysinfo = "0.23.12"
 thiserror = "1.0.31"
 tokio = { version = "1.18.2", features = [ "macros", "rt-multi-thread" ] }
