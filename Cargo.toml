@@ -15,7 +15,7 @@ envconfig = "0.10.0"
 log = "0.4.17"
 serde = "1.0.137"
 serde_json = "1.0.81"
-sysinfo = "0.23.13"
+sysinfo = "0.23.15"
 thiserror = "1.0.31"
 tokio = { version = "1.18.2", features = [ "macros", "rt-multi-thread" ] }
 tower-http = { version = "0.3.3", features = [ "trace" ] }
