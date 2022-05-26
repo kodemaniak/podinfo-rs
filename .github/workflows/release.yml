@@ -106,6 +106,6 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/kodemaniak/podman-rs/releases/podman-rs:${{ env.RELEASE_VERSION }}
-            ghcr.io/kodemaniak/podman-rs/releases/podman-rs:${{ env.CARGO_VERSION }}
-            ghcr.io/kodemaniak/podman-rs/releases/podman-rs:latest
+            ghcr.io/kodemaniak/podinfo-rs/releases/podinfo-rs:${{ env.RELEASE_VERSION }}
+            ghcr.io/kodemaniak/podinfo-rs/releases/podinfo-rs:${{ env.CARGO_VERSION }}
+            ghcr.io/kodemaniak/podinfo-rs/releases/podinfo-rs:latest
