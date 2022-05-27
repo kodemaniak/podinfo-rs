@@ -1,6 +1,37 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.2.3] - 2022-05-26
+
+### Bug Fixes
+
+- Update rust crate tracing to 0.1.34 (#20)
+- Update rust crate anyhow to 1.0.57 (#38)
+- Update rust crate thiserror to 1.0.31 (#51)
+- Update rust crate log to 0.4.17 (#45)
+- Update rust crate sysinfo to 0.23.12 (#46)
+- Update rust crate tracing-subscriber to 0.3.11 (#21)
+- Update rust crate tower-http to 0.3.3 (#37)
+- Update rust crate tokio to 1.18.2 (#58)
+- Update rust crate axum to 0.5.6 (#47)
+- Update rust crate serde to 1.0.137 (#49)
+- Update rust crate serde_json to 1.0.81 (#50)
+- Update rust crate sysinfo to 0.23.13 (#60)
+- Fix docker image name. (#65)
+
+### Miscellaneous Tasks
+
+- Update dependency alpine to v3.15.4 (#42)
+- Update anchore/scan-action digest to 001541c (#43)
+- Update docker/build-push-action digest to c5e6528 (#41)
+- Update aquasecurity/trivy-action action to v0.2.5 (#48)
+- Update aquasecurity/trivy-action action to v0.3.0 (#56)
+- Update anchore/scan-action digest to 8dc1927 (#54)
+- Update dependency docker.io/rust to v1.61.0 (#57)
+- Update github/codeql-action action to v2 (#59)
+- Update docker/login-action digest to d398f07 (#44)
+- Update docker/build-push-action digest to a571ccf (#61)
+
 ## [0.2.2] - 2022-03-13
 
 ### Bug Fixes
