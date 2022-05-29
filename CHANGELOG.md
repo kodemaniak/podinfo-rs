@@ -1,7 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [0.2.3] - 2022-05-26
+## [0.3.0] - 2022-05-29
+
+### Features
+
+- Addded Tiltfile and test k8s resources for local testing. (#69)
+
+## [0.2.3] - 2022-05-27
 
 ### Bug Fixes
 
