@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo-rs
+  namespace: podinfo-rs
+  labels:
+    app: podinfo-rs
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: podinfo-rs
+  template:
+    metadata:
+      labels:
+        app: podinfo-rs
+    spec:
+      containers:
+      - name: podinfo-rs
+        image: kodemaniak/podinfo-rs:latest
+        ports:
+        - containerPort: 20000
