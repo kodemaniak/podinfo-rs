@@ -17,7 +17,7 @@
 To test the service run:
 
 ````
-curl -v http://localhost:6666/_z/healthz
+curl -v http://localhost:20000/_z/healthz
 ````
 
 The call should return a `200 OK`:
@@ -36,7 +36,7 @@ The service can be configured via environment variables, exclusively.
 | --- | --- | --- |
 | RUST_LOG | Configure logging level of components. Compatible with [env_logger](https://crates.io/crates/env_logger) | `info` |
 | PODINFORS_BIND_IP | IP address to bind the service to. Currently only IPV4 supported.  | `127.0.0.1` |
-| PODINFORS_BIND_PORT | The port the service should listen on. | `6666` |
+| PODINFORS_BIND_PORT | The port the service should listen on. | `20000` |
 
 ## REST API
 
