@@ -101,7 +101,7 @@ jobs:
           echo "RELEASE_VERSION=$CARGO_VERSION-$GIT_COMMIT_TIMESTAMP-$GIT_SHORT_COMMIT_ID" >> $GITHUB_ENV
 
       - name: build and push Docker image
-        uses: docker/build-push-action@a571ccfa72059c1f1dbabfebed15b0101338bade
+        uses: docker/build-push-action@42863b1282f7046f6c1ec9222965bbceafae3bb8
         with:
           context: .
           push: true
