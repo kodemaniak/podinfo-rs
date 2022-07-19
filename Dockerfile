@@ -1,4 +1,4 @@
-FROM docker.io/rust:1.61.0 as builder
+FROM docker.io/rust:1.62.1 as builder
 
 WORKDIR /usr/src/podinfo-rs
 COPY . .
