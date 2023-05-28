@@ -9,7 +9,7 @@ publish = false
 [dependencies]
 anyhow = "1.0.58"
 axum = "0.5.8"
-build-info = { version = "0.0.26", features = [ "runtime", "serde" ] }
+build-info = { version = "0.0.31", features = [ "runtime", "serde" ] }
 caps = "0.5.3"
 envconfig = "0.10.0"
 log = "0.4.17"
